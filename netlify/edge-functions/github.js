@@ -36,9 +36,9 @@ export default async (request, context) => {
 			  });
 	
 	let info = {};
-	let feature_queue = requested_features.map((feature) => VALID_FEATURES[feature](name, ignored));
+	let feature_queue = requested_features.map((feature) => [feature, VALID_FEATURES[feature](name, ignored)]);
 	for (let future of feature_queue)
-		info = {...info, ...(await future)};
+		info[future[0]] = await future[1];
 	return new Response(JSON.stringify(info), {
 	    headers: { "content-type": "text/html" }
 	  });

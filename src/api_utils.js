@@ -38,7 +38,7 @@ async function issueAndPr(user, ignored){
 
 	const response = await fetch("https://api.github.com/search/issues?q=author:"+user);
 	const result = await response.json();
-	
+
 	if (result.message == "Validation Failed"){ return {"ERROR": "Can't find user"} }
 	
 	
@@ -96,7 +96,7 @@ async function allCommits(user, ignored){
 		commits_this_year: 0,
 		commits_from_last_week: 0,
 		commits_from_last_month: 0,
-		commits_from_last_year: 0,
+		commits_from_last_year: 0
 	};
 	if (user == "DEBUG") return count;
 
@@ -124,13 +124,13 @@ async function allCommits(user, ignored){
 	return count;
 }
 async function basicInfo(user, ignored){
-	if (user == "DEBUG") return {site_admin:0, public_repos:0,public_gists:0,followers:0,following:0,joined:0};
+	if (user == "DEBUG") return {site_admin:0, public_repos:0,public_gists:0,followers:0,following:0,joined:0, avatar_url: "https://avatars.githubusercontent.com/u/11259674?v=4"};
 
 
 	const response = await fetch("https://api.github.com/users/"+user);
 	const jresult = await response.json();
 	
-	if (jresult.message == "Validation Failed"){ return {"ERROR": "Can't find user"} }
+	if (jresult.message == "Validation Failed" || jresult.message == "Not Found"){ return {"ERROR": "Can't find user"} }
 
 	let count = {
 		site_admin: jresult.site_admin || false,
@@ -138,6 +138,7 @@ async function basicInfo(user, ignored){
 		public_gists: jresult.public_gists || 0,
 		followers: jresult.followers || 0,
 		following: jresult.following || 0,
+		avatar_url: jresult.avatar_url,
 		joined: Date.parse(jresult.created_at)/1000,
 	};
 	for (let to_ignore of ignored)
