@@ -1,7 +1,12 @@
-const api = require("../../api_utils.js")
+import { sortByDuplicates,
+  issueAndPr,
+  events,
+  allCommits,
+  basicInfo,
+  repoInfo,} from "../../api_utils.js"
 
 export default async (request, context) => { 
-	const VALID_FEATURES = {issueAndPr: api.issueAndPr, basic: api.basicInfo, repos: api.repoInfo, events: api.events, allCommits: api.allCommits};
+	const VALID_FEATURES = {issueAndPr: issueAndPr, basic: basicInfo, repos: repoInfo, events: events, allCommits: allCommits};
 
 	const url = new URL(request.url)
 	const name = url.pathname.slice(1);

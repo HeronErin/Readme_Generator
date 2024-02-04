@@ -157,7 +157,7 @@ async function repoInfo(user, ignored){
 	
 	return count;
 }
-module.exports = {
+export {
   isInCurrentDay,
   isInCurrentWeek,
   isInCurrentMonth,
