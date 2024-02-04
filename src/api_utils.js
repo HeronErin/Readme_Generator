@@ -161,7 +161,7 @@ async function basicInfo(user, ignored){
 		following: jresult.following || 0,
 		joined: Date.parse(jresult.created_at)/1000,
 	};
-	if (!ignored.includes("avatar_url")) count[avatar_url] = await getImageBase64Url(jresult.avatar_url);
+	if (!ignored.includes("avatar_url")) count.avatar_url = await getImageBase64Url(jresult.avatar_url);
 
 	for (let to_ignore of ignored)
 		if (count[to_ignore] !== undefined) delete count[to_ignore];

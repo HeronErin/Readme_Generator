@@ -1,0 +1,35 @@
+module.exports = `
+
+.profilePic{
+    height: 32px;
+    width: 32px;
+}
+.primaryFlex {
+  display: flex;
+
+}
+
+.block {
+  border: 1px solid #ccc;
+  padding: 3px;
+  margin: 3px;
+  height: fit-content;
+  // text-align: center;
+}
+
+#userInfo {
+  list-style: none;
+  padding: 0;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+li {
+  margin: 5px 0;
+}
+
+
+`
