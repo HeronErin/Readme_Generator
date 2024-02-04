@@ -5,4 +5,8 @@
   path = "/hello"
   function = "hello"
 
+[[edge_functions]]
+  path = "/github"
+  function = "github"
+
 
