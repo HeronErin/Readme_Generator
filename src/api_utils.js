@@ -1,3 +1,21 @@
+// This file is part of github.com/HeronErin/Readme_Generator
+// It is used to cummunicate with the github api.
+// Copyright (C) 2024  HeronErin
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
 const isInCurrentDay = timestamp => new Date(timestamp).toDateString() === new Date().toDateString();
 const isInCurrentWeek = timestamp => {
   const date = new Date(timestamp), today = new Date(), start = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay()), end = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (6 - today.getDay()));
