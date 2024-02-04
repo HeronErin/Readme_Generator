@@ -1,41 +1,22 @@
-# Getting started with Netlify Edge Functions
+# Github readme statistics generator
 
-## Deploy this site to Netlify
+This is early WIP. Here is an example output:
+![src/x.svg](src/x.svg)
 
-<a href="https://ntl.fyi/3C1Uwi2"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
+## Copyright
+```
+ Copyright (C) 2024  HeronErin
 
----
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
 
-## Tutorial outline
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
 
-Hello and welcome to the tutorial!
-
-This tutorial will take you through using Edge Functions on Netlify to build the following URLs:
-
-## 1. Hello, world
-
-We'll write an Edge Function to serve the text `Hello, World from the edge!`
-
-[/hello](https://getting-started-with-netlify-edge-functions.netlify.app/hello)
-
-## 2. Serve an HTML template
-
-We'll set up the project to serve static HTML template files from the /public directory.
-
-[/hello-template](https://getting-started-with-netlify-edge-functions.netlify.app/hello-template)
-
-## 3. Add location data to the HTML template
-
-We'll write an Edge Function to intercept a static HTML template and update it using geolocation data at the edge.
-
-[/hello-template?method=transform](https://getting-started-with-netlify-edge-functions.netlify.app/hello-template?method=transform)
-
-## Watch the video tutorial
-
-[![Getting started with Netlify Edge Functions video thumbnail](video_thumbnail.png)](https://www.youtube.com/watch?v=6pEVhH37xQE)
-
-## Read the supporting blog post
-
-[![Add personalization to static HTML with Netlify Edge Functions](blog_post_og.png)](https://ntl.fyi/personalize-html-with-edge-functions)
-
-
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+```
