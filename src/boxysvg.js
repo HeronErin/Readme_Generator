@@ -56,7 +56,7 @@ function EndTable(body){
     return body+ ( `</div>\n` );
 }
 function defaultGenName(){
-    return `<span class="username">${state.name}!!</span>\n`; 
+    return `<span class="username">${state.name}</span>\n`; 
 }
 
 function EnterBlock(body){
@@ -89,7 +89,14 @@ const overides = {
     "basic/public_repos": (x)=>`Has ${x} Repositories`,
     "basic/public_gists": (x)=>`Has ${x} Gists`,
     "basic/followers": (x)=>`Has ${x} followers`,
-    // "basic/following": (x)=>`Following ${x} people`,
+
+    "issueAndPr": (x)=>"Open Source Community",
+    "issueAndPr/closed_issues": (x)=>`Opened ${x} issues that have closed`,
+    "issueAndPr/issues": (x)=>`Opened ${x} issues`,
+    "issueAndPr/prs": (x)=>`Opened ${x} PRs`,
+    "issueAndPr/merged_prs": (x)=>`Opened ${x} PRs that have been merged`,
+    "issueAndPr/closed_prs": (x)=>`Opened ${x} PRs that have been closed`,
+    "issueAndPr/open_prs": (x)=>`Opened ${x} PRs that are open`,
 }
 function ListPointHandle(feature, specifier){
     if (state.data[feature] == undefined) return null;
@@ -100,7 +107,8 @@ function ListPointHandle(feature, specifier){
     return text;
 }
 function SubHeader(text){
-    return `<span id="subHeader">${text}</span>\n`
+    if (overides[text]) text = overides[text](text);
+    return `<span class="subHeader">${text}</span>\n`
 }
 
 function defaultHeaderGen(body){
