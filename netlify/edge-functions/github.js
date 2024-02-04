@@ -3,7 +3,7 @@ import { sortByDuplicates,
   events,
   allCommits,
   basicInfo,
-  repoInfo,} from "../../api_utils.js"
+  repoInfo,} from "../../src/api_utils.js"
 
 export default async (request, context) => { 
 	const VALID_FEATURES = {issueAndPr: issueAndPr, basic: basicInfo, repos: repoInfo, events: events, allCommits: allCommits};

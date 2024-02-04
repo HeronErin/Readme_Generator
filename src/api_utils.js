@@ -38,6 +38,7 @@ async function issueAndPr(user, ignored){
 
 	const response = await fetch("https://api.github.com/search/issues?q=author:"+user);
 	const result = await response.json();
+	
 	if (result.message == "Validation Failed"){ return {"ERROR": "Can't find user"} }
 	
 	
@@ -65,6 +66,7 @@ async function events(user, ignored){
 	const response = await fetch("https://api.github.com/users/"+user+"/events");
 	const jresult = await response.json();
 
+	if (jresult.message == "Validation Failed"){ return {"ERROR": "Can't find user"} }
 	
 	for (let event of jresult){
 		let timeElapsed = Date.now()-Date.parse(event.created_at);
@@ -100,6 +102,8 @@ async function allCommits(user, ignored){
 
 	const response = await fetch("https://api.github.com/search/commits?q=author:"+user+"&sort=committer-date&per_page=100");
 	const jresult = await response.json();
+	
+	if (jresult.message == "Validation Failed"){ return {"ERROR": "Can't find user"} }
 
 	count.total_commits=jresult.total_count;
 
@@ -125,6 +129,9 @@ async function basicInfo(user, ignored){
 
 	const response = await fetch("https://api.github.com/users/"+user);
 	const jresult = await response.json();
+	
+	if (jresult.message == "Validation Failed"){ return {"ERROR": "Can't find user"} }
+
 	let count = {
 		site_admin: jresult.site_admin || false,
 		public_repos: jresult.public_repos || 0,
@@ -142,7 +149,9 @@ async function repoInfo(user, ignored){
 
 	const response = await fetch("https://api.github.com/users/"+user+"/repos");
 	const jresult = await response.json();
-	// console.log(jresult)
+	
+	if (jresult.message == "Validation Failed"){ return {"ERROR": "Can't find user"} }
+
 	let count = {
 		mostCommonLanguages: sortByDuplicates(jresult.map((repo)=>repo.language||"None")),
 		mostCommonLicenses:  sortByDuplicates(jresult.filter((repo)=>!!repo.license).map((repo)=>repo.license)),
@@ -157,7 +166,7 @@ async function repoInfo(user, ignored){
 	
 	return count;
 }
-export {
+const list = {
   isInCurrentDay,
   isInCurrentWeek,
   isInCurrentMonth,
@@ -173,3 +182,5 @@ export {
   basicInfo,
   repoInfo,
 };
+// export {..list}
+module.exports = list
