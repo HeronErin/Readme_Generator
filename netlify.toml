@@ -6,7 +6,7 @@
   function = "hello"
 
 [[edge_functions]]
-  path = "/github"
+  path = "/github/*"
   function = "github"
 
 

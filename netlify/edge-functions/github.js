@@ -10,7 +10,10 @@ export default async (request, context) => {
 
 	const url = new URL(request.url)
 	const name = url.pathname.slice(1);
-
+	return new Response(name, {
+			    headers: { "content-type": "text/html" },
+			    status: 406
+			  });
 
 	// console.log(url.searchParams)
 	let requested_features, ignored;
