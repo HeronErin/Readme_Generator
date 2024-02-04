@@ -9,11 +9,12 @@ export default async (request, context) => {
 	const VALID_FEATURES = {issueAndPr: issueAndPr, basic: basicInfo, repos: repoInfo, events: events, allCommits: allCommits};
 
 	const url = new URL(request.url)
-	const name = url.pathname.slice(1);
-	return new Response(name, {
-			    headers: { "content-type": "text/html" },
-			    status: 406
-			  });
+	const name = url.pathname.slice(8); // Cut out "/github/"
+
+	// return new Response(name, {
+	// 		    headers: { "content-type": "text/html" },
+	// 		    status: 406
+	// 		  });
 
 	// console.log(url.searchParams)
 	let requested_features, ignored;
