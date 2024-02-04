@@ -1,4 +1,4 @@
-const api = require("./api_utils.js")
+const api = require("../../api_utils.js")
 
 export default async (request, context) => { 
 	const VALID_FEATURES = {issueAndPr: api.issueAndPr, basic: api.basicInfo, repos: api.repoInfo, events: api.events, allCommits: api.allCommits};
