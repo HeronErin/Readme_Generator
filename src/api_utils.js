@@ -32,6 +32,24 @@ function sortByDuplicates(inputList) {
 	return sortedUniqueStrings.map(JSON.parse);
 }
 
+async function getImageBase64Url(url) {
+  try {
+    let response = await fetch(url);
+    let cont = await response.arrayBuffer();
+
+    const buffer = Buffer.from(cont);
+
+    const base64Data = buffer.toString('base64');
+
+    const base64Url = `data:image/png;base64,${base64Data}`;
+
+    return base64Url;
+  } catch (error) {
+    console.error("Error fetching or processing the image:", error);
+    return null;
+  }
+}
+
 async function issueAndPr(user, ignored){
 	let count = {closed_issues: 0, issues: 0, prs: 0, merged_prs: 0, open_prs: 0, closed_prs: 0};
 	if (user == "DEBUG") return count;
@@ -123,8 +141,11 @@ async function allCommits(user, ignored){
 		if (count[to_ignore] !== undefined) delete count[to_ignore];
 	return count;
 }
+
+const DEBUG_URL = "data:image/png;base64,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"
+
 async function basicInfo(user, ignored){
-	if (user == "DEBUG") return {site_admin:0, public_repos:0,public_gists:0,followers:0,following:0,joined:0, avatar_url: "https://avatars.githubusercontent.com/u/11259674?v=4"};
+	if (user == "DEBUG") return {site_admin:0, public_repos:0,public_gists:0,followers:0,following:0,joined:0, avatar_url: DEBUG_URL};
 
 
 	const response = await fetch("https://api.github.com/users/"+user);
@@ -138,9 +159,10 @@ async function basicInfo(user, ignored){
 		public_gists: jresult.public_gists || 0,
 		followers: jresult.followers || 0,
 		following: jresult.following || 0,
-		avatar_url: jresult.avatar_url,
 		joined: Date.parse(jresult.created_at)/1000,
 	};
+	if (!ignored.includes("avatar_url")) count[avatar_url] = await getImageBase64Url(jresult.avatar_url);
+
 	for (let to_ignore of ignored)
 		if (count[to_ignore] !== undefined) delete count[to_ignore];
 	return count;
